@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'shell';
+  public sidebarItems = [
+    // { label: 'Search Employee', url: './employees', icon: 'fa-magnifying-glass' },
+    { label: 'Check All Employees', url: './employees', icon: 'fa-table' },
+  ];
 }
