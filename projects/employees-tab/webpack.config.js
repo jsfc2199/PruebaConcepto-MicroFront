@@ -1,4 +1,4 @@
-const { shareAll, withModuleFederationPlugin, SharedMappings } = require('@angular-architects/module-federation/webpack');
+const { shareAll, withModuleFederationPlugin } = require('@angular-architects/module-federation/webpack');
 
 module.exports = withModuleFederationPlugin({
 
@@ -6,8 +6,9 @@ module.exports = withModuleFederationPlugin({
 
   //Exponemos no un componente sino un modulo y apuntamos a la ruta relativa
   //Como este modulo es el que contiene al micro front, es lo único que debemos exponer
+  //El nombre que se expone debe coincidir EXACTAMENTE con el nombre del modulo que se quiere exponer del MF
   exposes: {
-    './EmployeesTabModule':
+    './EmployeeModule':
       './projects/employees-tab/src/app/employee/employee.module.ts',
   },
 

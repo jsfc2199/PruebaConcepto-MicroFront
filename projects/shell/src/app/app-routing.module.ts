@@ -3,10 +3,15 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'employees',
     //cargamos el modulo exportado desde el webpack del MF de employeesTab
-    loadChildren: ()=> import('employeesTab/EmployeesTabModule').then((m) => m.EmployeesTabModule)
+    loadChildren: ()=> import('employeesTab/EmployeeModule').then((m) => m.EmployeeModule)
   },
+  {
+    path: '',
+    redirectTo: 'employees',
+    pathMatch: 'full'
+  }
 ];
 
 @NgModule({
