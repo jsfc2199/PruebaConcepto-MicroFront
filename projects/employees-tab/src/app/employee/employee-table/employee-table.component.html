@@ -1,0 +1,17 @@
+<div class="container table-responsive py-5">
+  <h2
+    [ngStyle]="{
+      display: 'flex',
+      'justify-content': 'center'
+    }"
+  >
+    Employees
+  </h2>
+  <div class="loading-container" *ngIf="loading; else employeeTable">
+    <div class="spinner-grow text-warning"></div>
+  </div>
+
+  <ng-template #employeeTable>
+    <app-employee-card [employees]="employees"></app-employee-card>
+  </ng-template>
+</div>
