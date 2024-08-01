@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { Employee } from '../../interfaces/employee.interface';
+import { CommonThingsService } from '@commonThings';
 
 @Component({
   selector: 'app-employee-card',
@@ -9,4 +10,10 @@ import { Employee } from '../../interfaces/employee.interface';
 export class EmployeeCardComponent {
 
   @Input() employees: Employee[] = []
+
+  private commonThings = inject(CommonThingsService)
+
+  employeeDetails(id: number){
+    this.commonThings.sendEmployeeId(id)
+  }
 }
