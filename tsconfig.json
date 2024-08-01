@@ -2,8 +2,8 @@
   "compileOnSave": false,
   "compilerOptions": {
     "paths": {
-      "commonThings": [
-        "./dist/common-things"
+      "@commonThings": [
+        "./projects/common-things/src/public-api.ts"
       ]
     },
     "outDir": "./dist/out-tsc",
