@@ -1,0 +1,22 @@
+<div *ngIf="employee; else searchEmployee">
+  <h4 class="text-center py-5">Employee Details</h4>
+
+  <div class="d-flex justify-content-center align-items-center" >
+    <div class="card" style="width: 18rem;">
+      <img [src]="employeeImg" class="card-img-top" alt="...">
+      <div class="card-body text-center">
+        <h5 class="card-title">{{ employee.employee_name }}</h5>
+        <p class="card-text"> Salary: {{ employee.employee_salary }} & Anual Salary:
+          {{ employee.employee_anual_salary }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<ng-template #searchEmployee>
+  <h4 class="text-center">
+    <i class="fa-solid fa-hourglass-start"></i> Expecting Id to Show
+    Information... <i class="fa-solid fa-hourglass-end"></i>
+  </h4>
+</ng-template>

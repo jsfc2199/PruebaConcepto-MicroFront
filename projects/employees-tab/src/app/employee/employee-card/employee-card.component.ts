@@ -15,5 +15,7 @@ export class EmployeeCardComponent {
 
   employeeDetails(id: number){
     this.commonThings.sendEmployeeId(id)
+
+    //TODO: Ir al MF de employee by Id
   }
 }
