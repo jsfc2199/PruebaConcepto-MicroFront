@@ -4,8 +4,11 @@ module.exports = withModuleFederationPlugin({
 
   name: 'employeesTab',
 
+  //Exponemos no un componente sino un modulo y apuntamos a la ruta relativa
+  //Como este modulo es el que contiene al micro front, es lo único que debemos exponer
   exposes: {
-    './Component': './projects/employees-tab/src/app/app.component.ts',
+    './EmployeesTabModule':
+      './projects/employees-tab/src/app/employee/employee.module.ts',
   },
 
   shared: {
