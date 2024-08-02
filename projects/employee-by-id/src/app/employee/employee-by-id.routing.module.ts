@@ -3,7 +3,9 @@ import { RouterModule, Routes } from "@angular/router";
 import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
 
 const routes: Routes = [
-  {path: '', component: EmployeeDetailsComponent}
+  {path: 'employee', component: EmployeeDetailsComponent},
+  {path: '', redirectTo: 'employee', pathMatch: 'full'},
+
 ]
 @NgModule({
   imports: [RouterModule.forChild(routes)],

@@ -8,6 +8,11 @@ const routes: Routes = [
     loadChildren: ()=> import('employeesTab/EmployeeModule').then((m) => m.EmployeeModule)
   },
   {
+    path: 'employeeId',
+    //cargamos el modulo exportado desde el webpack del MF de employeesTab
+    loadChildren: ()=> import('employeeById/EmployeeByIdModule').then((m) => m.EmployeeByIdModule)
+  },
+  {
     path: '',
     redirectTo: 'employees',
     pathMatch: 'full'
