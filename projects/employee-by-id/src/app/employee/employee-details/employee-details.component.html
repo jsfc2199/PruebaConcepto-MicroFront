@@ -1,5 +1,5 @@
 <div *ngIf="employee; else searchEmployee">
-  <h4 class="text-center py-5">Employee Details</h4>
+  <h4 class="text-center py-5">Employee Details desde MF 2</h4>
 
   <div class="d-flex justify-content-center align-items-center" >
     <div class="card" style="width: 18rem;">
@@ -8,6 +8,9 @@
         <h5 class="card-title">{{ employee.employee_name }}</h5>
         <p class="card-text"> Salary: {{ employee.employee_salary }} & Anual Salary:
           {{ employee.employee_anual_salary }}</p>
+      </div>
+      <div class="card-footer text-center">
+        <button class="btn btn-primary" (click)="volverACards()">Volver a las cards</button>
       </div>
     </div>
   </div>

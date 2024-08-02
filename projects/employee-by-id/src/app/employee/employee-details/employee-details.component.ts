@@ -2,6 +2,8 @@ import { Component, inject } from '@angular/core';
 import { Employee } from '../../interfaces/employee.interface';
 import { CommonThingsService } from '@commonThings';
 import { EmployeeService } from '../../services/employee.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-employee-details',
@@ -13,17 +15,37 @@ export class EmployeeDetailsComponent {
   employee?: Employee;
   employeeImg = this.employee?.profile_image ?? 'https://st4.depositphotos.com/14953852/24787/v/380/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg'
 
+  commonThingsSubs = new Subscription()
+
   private commonThings = inject(CommonThingsService)
+
   private employeeService = inject(EmployeeService)
+  private router = inject(Router)
+
 
   ngOnInit(): void {
-    // this.commonThings.employeeIdInfo
-    // .subscribe(resp => console.log(resp))
-    this.employeeService.getEmployeeById(1)
-    .subscribe(resp => {
-      this.employee = resp
-    })
+    //!en este punto se podría obtener el id desde el activatedRoute de la siguiente manera
+    //! private activatedRoute = inject(ActivatedRoute)
+    //! this.activatedRoute.params.subscribe(params => console.log(params))
+
+    //! Sin embargo se usara el commonThing library para practicar con este y usar su emisión de data
+
+   this.commonThingsSubs = this.commonThings.employeeIdInfo
+   .pipe(
+    switchMap((id) => this.employeeService.getEmployeeById(id))
+   )
+   .subscribe(employee => {
+    this.employee = employee
+   })
+
   }
 
+  volverACards(){
+    this.router.navigate(['/employees']);
+  }
+
+  ngOnDestroy(): void {
+    this.commonThingsSubs.unsubscribe()
+  }
 
 }
