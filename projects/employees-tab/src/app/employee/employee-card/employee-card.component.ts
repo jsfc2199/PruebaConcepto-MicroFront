@@ -21,6 +21,7 @@ export class EmployeeCardComponent {
 
   editEmployee(employee: Employee){
     this.commonThings.setItem('employee', employee)
-    this.router.navigate(['/editEmployee'])
+    const id = employee.id
+    this.router.navigate(['/editEmployee', id])
   }
 }

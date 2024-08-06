@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { EditEmployeeRoutingModule } from './edit-employee-routing.module';
 import { EmployeeEditFormComponent } from './employee-edit-form/employee-edit-form.component';
 
+import { ReactiveFormsModule } from '@angular/forms'
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import { EmployeeEditFormComponent } from './employee-edit-form/employee-edit-fo
   ],
   imports: [
     CommonModule,
-    EditEmployeeRoutingModule
+    EditEmployeeRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class EditEmployeeModule { }

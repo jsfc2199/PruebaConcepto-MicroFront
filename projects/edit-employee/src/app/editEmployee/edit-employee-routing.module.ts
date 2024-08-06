@@ -4,14 +4,9 @@ import { EmployeeEditFormComponent } from './employee-edit-form/employee-edit-fo
 
 const routes: Routes = [
   {
-    path: 'editEmployee',
+    path: '',
     component: EmployeeEditFormComponent
   },
-  {
-    path: '',
-    redirectTo: 'editEmployee',
-    pathMatch: 'full'
-  }
 ];
 
 @NgModule({

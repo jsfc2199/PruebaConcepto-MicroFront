@@ -13,7 +13,7 @@ const routes: Routes = [
     loadChildren: ()=> import('employeeById/EmployeeByIdModule').then((m) => m.EmployeeByIdModule)
   },
   {
-    path: 'editEmployee',
+    path: 'editEmployee/:id',
     loadChildren: ()=> import('editEmployee/EditEmployeeModule').then((m) => m.EditEmployeeModule)
   },
   {

@@ -1,13 +1,13 @@
 <header class="header">
-  <h1 id="title" class="text-center">Survey Form MF</h1>
+  <h1 id="title" class="text-center">Edit Employee Form MF</h1>
 </header>
 <div class="form-wrap">
-  <form id="survey-form">
+  <form id="survey-form" [formGroup]="editingForm" (ngSubmit)="updateEmployee()">
     <div class="row">
       <div class="col-md-12">
         <div class="form-group">
           <label id="name-label" for="name">Name</label>
-          <input type="text" name="name" id="name" placeholder="Enter your name" class="form-control" required>
+          <input type="text" name="name" id="name" placeholder="Enter your name" class="form-control" formControlName="employee_name">
         </div>
       </div>
 
@@ -17,20 +17,20 @@
       <div class="col-md-6">
         <div class="form-group">
           <label id="number-label" for="number">Age </label>
-          <input type="number" name="age" id="number" min="10" max="99" class="form-control" placeholder="Age" >
+          <input type="number" name="age" id="number" class="form-control" placeholder="Age" formControlName="employee_age">
         </div>
       </div>
       <div class="col-md-6">
         <div class="form-group">
           <label id="salary-label" for="salary">Salary</label>
-          <input type="salary" name="salary" id="salary" placeholder="Enter your salary" class="form-control" required>
+          <input type="number" name="salary" id="salary" placeholder="Enter your salary" class="form-control" formControlName="employee_salary">
         </div>
       </div>
     </div>
 
     <div class="text-center">
       <div class="col-md-12">
-        <button type="submit" id="submit" class="btn btn-primary d-block w-100">Update Changes</button>
+        <button [class.disabled]="editingForm.invalid" [ngStyle]="{'background-color': editingForm.invalid ? 'gray' : ''}" type="submit" id="submit" class="btn btn-primary d-block w-100">Update Changes</button>
       </div>
     </div>
 
