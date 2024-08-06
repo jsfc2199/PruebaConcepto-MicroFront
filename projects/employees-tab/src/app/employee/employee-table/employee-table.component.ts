@@ -1,11 +1,10 @@
 import { Component, inject } from '@angular/core';
-import { Employee } from '../../interfaces/employee.interface';
 import { EmployeesService } from '../../services/employees.service';
+import { Employee } from '@commonThings';
 
 @Component({
   selector: 'app-employee-table',
   templateUrl: './employee-table.component.html',
-  styleUrl: './employee-table.component.css'
 })
 export class EmployeeTableComponent {
   employees: Employee[] = [];

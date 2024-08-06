@@ -1,14 +1,12 @@
 import { Component, inject } from '@angular/core';
-import { Employee } from '../../interfaces/employee.interface';
-import { CommonThingsService } from '@commonThings';
+import { CommonThingsService, Employee } from '@commonThings';
 import { EmployeeService } from '../../services/employee.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Subscription, fromEvent } from 'rxjs';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-employee-details',
   templateUrl: './employee-details.component.html',
-  styleUrl: './employee-details.component.css'
 })
 export class EmployeeDetailsComponent {
 
