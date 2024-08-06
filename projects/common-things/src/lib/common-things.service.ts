@@ -1,19 +1,49 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import CryptoJS from 'crypto-js';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CommonThingsService {
+  constructor() {}
 
-  constructor() { }
+  //! se usa como referencia lo documentado en npm install secure-web-storage
 
-  private employeeId = new BehaviorSubject<number>(0)
+  private SECRET_KEY = environment.SECRET_KEY;
 
-  public employeeIdInfo = this.employeeId.asObservable()
+  setItem(key: string, value: any): void {
+    const hashedKey = this.hash(key);
+    const stringValue = JSON.stringify(value);
+    const encryptedValue = this.encrypt(stringValue);
+    sessionStorage.setItem(hashedKey, encryptedValue);
+  }
 
-  //Enviamos la info del id clickeado por el micro front de employee Tab
-  sendEmployeeId(id: number){
-    this.employeeId.next(id);
+  getItem(key: string): any {
+    const hashedKey = this.hash(key);
+    const encryptedValue = sessionStorage.getItem(hashedKey);
+    if (encryptedValue) {
+      const decryptedValue = this.decrypt(encryptedValue);
+      return JSON.parse(decryptedValue);
+    }
+    return null;
+  }
+
+  private hash(key: string): string {
+    return CryptoJS.HmacSHA256(key, this.SECRET_KEY).toString();
+  }
+
+  private encrypt(data: string): string {
+    const encryptedData = CryptoJS.AES.encrypt(
+      data,
+      this.SECRET_KEY
+    ).toString();
+    return encryptedData;
+  }
+
+  private decrypt(data: string): string {
+    const bytes = CryptoJS.AES.decrypt(data, this.SECRET_KEY);
+    const decryptedData = bytes.toString(CryptoJS.enc.Utf8);
+    return decryptedData;
   }
 }

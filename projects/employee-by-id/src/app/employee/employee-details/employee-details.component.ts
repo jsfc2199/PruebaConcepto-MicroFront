@@ -3,7 +3,7 @@ import { Employee } from '../../interfaces/employee.interface';
 import { CommonThingsService } from '@commonThings';
 import { EmployeeService } from '../../services/employee.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Subscription, switchMap } from 'rxjs';
+import { Subscription, fromEvent } from 'rxjs';
 
 @Component({
   selector: 'app-employee-details',
@@ -24,20 +24,13 @@ export class EmployeeDetailsComponent {
 
 
   ngOnInit(): void {
-    //!en este punto se podría obtener el id desde el activatedRoute de la siguiente manera
-    //! private activatedRoute = inject(ActivatedRoute)
-    //! this.activatedRoute.params.subscribe(params => console.log(params))
 
-    //! Sin embargo se usara el commonThing library para practicar con este y usar su emisión de data
+    const employeeId = this.commonThings.getItem('id')
 
-   this.commonThingsSubs = this.commonThings.employeeIdInfo
-   .pipe(
-    switchMap((id) => this.employeeService.getEmployeeById(id))
-   )
-   .subscribe(employee => {
-    this.employee = employee
-   })
-
+    this.employeeService.getEmployeeById(employeeId)
+    .subscribe(employee => {
+        this.employee = employee
+       })
   }
 
   volverACards(){
