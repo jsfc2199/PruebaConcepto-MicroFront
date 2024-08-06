@@ -5,7 +5,7 @@ module.exports = withModuleFederationPlugin({
   name: 'editEmployee',
 
   exposes: {
-    './Component': './projects/edit-employee/src/app/app.component.ts',
+    './EditEmployeeModule': './projects/edit-employee/src/app/editEmployee/edit-employee.module.ts',
   },
 
   shared: {
