@@ -5,6 +5,7 @@ module.exports = withModuleFederationPlugin({
   remotes: {
     employeesTab: "http://localhost:4201/remoteEntry.js",
     employeeById: "http://localhost:4202/remoteEntry.js",
+    editEmployee: "http://localhost:4203/remoteEntry.js",
   },
 
   shared: {

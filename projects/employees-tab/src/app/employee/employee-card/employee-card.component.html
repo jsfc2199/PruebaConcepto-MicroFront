@@ -4,10 +4,18 @@
       <div class="card-body">
         <h5 class="card-title">name:{{ employee.employee_name }}</h5>
       </div>
-      <div class="card-footer">
+      <div class="card-footer text-center">
         <small class="text-body-secondary">Age: {{ employee.employee_age }}</small>
+        <div class="row">
+          <div class="col-6">
+            <button class="btn btn-primary" (click)="employeeDetails(employee.id)">Salary Details</button>
+          </div>
+          <div class="col-6">
+            <button class="btn btn-warning" (click)="editEmployee(employee)">Edit Employee</button>
+          </div>
+        </div>
       </div>
-      <button class="btn btn-primary" (click)="employeeDetails(employee.id)">Check Salary Details</button>
+
     </div>
   </div>
 </div>

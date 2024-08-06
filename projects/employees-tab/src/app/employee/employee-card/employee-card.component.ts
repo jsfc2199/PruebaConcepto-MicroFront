@@ -18,4 +18,9 @@ export class EmployeeCardComponent {
     this.commonThings.setItem('id', data)
     this.router.navigate(['/employeeId', id]);
   }
+
+  editEmployee(employee: Employee){
+    this.commonThings.setItem('employee', employee)
+    this.router.navigate(['/editEmployee'])
+  }
 }
